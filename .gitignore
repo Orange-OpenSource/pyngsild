@@ -1,0 +1,17 @@
+*.pyc
+*-token.txt
+.vscode/
+__pycache__/
+.venv/
+venv/
+.cache/
+.pytest_cache/
+.mypy_cache/
+*.egg-info/
+.coverage
+GPUCache/
+build/
+/.project
+**/.ipynb_checkpoints
+dist/
+sdist/
