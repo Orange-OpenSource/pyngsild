@@ -33,6 +33,12 @@ def build_entity(row: Row) -> Entity:
 
 
 src = SourceCoinGecko()
+
+# As an alternative to inherit from the SourceJson class
+# One could pass a Callable to the SourceJson() constructor
+# As in the line below
+# src = SourceJson(lambda: requests.get(COINGECKO_COMPANIES_BTC_ENDPOINT), path="companies", provider="CoinGecko API")
+
 sink = SinkStdout()
 agent = Agent(src, sink, process=build_entity)
 agent.run()
