@@ -17,7 +17,7 @@ from pydantic import BaseModel
 from typing import Callable, Any
 from anyio import Lock
 from pyngsild.source import SourceSingle, Row
-from orionldclient.model.entity import Entity
+from ngsildclient.model.entity import Entity
 from pyngsild.sink import Sink, SinkStdout
 from . import ManagedDaemon
 

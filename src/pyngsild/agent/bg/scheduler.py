@@ -42,9 +42,9 @@ class Scheduler(ManagedDaemon):
     def __init__(
         self,
         agent: Agent,
-        func: Callable = None,
         interval: int = 1,
         unit: UNIT = UNIT.minutes,
+        func: Callable = None
     ):
         # take an already created agent and reschedule it
         # 1 - a func may be provided to create a new Source
@@ -52,9 +52,9 @@ class Scheduler(ManagedDaemon):
         # 3 - or the Source __init__() is called to reinit the Source
         super().__init__(agent.sink, agent.process)
         self.src = agent.src
-        self.func = func
         self.interval = interval
         self.unit = unit
+        self.func = func
 
         logger.info("schedule job")
         if self.unit == UNIT.seconds:

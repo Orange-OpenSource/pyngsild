@@ -18,6 +18,7 @@ import time
 import random
 import json
 import operator
+from attr import has
 import xmltodict
 import pandas as pd
 import openpyxl
@@ -95,16 +96,26 @@ class SourceDict(Source):
 class SourceJson(SourceDict):
     """Read JSON formatted data from JSON object"""
 
-    def __init__(self, content: str, provider: str = "user", path: str = None):
-        payload = json.loads(content)
+    def __init__(
+        self, content: str | Callable, provider: str = "user", path: str = None
+    ):
+        if isinstance(content, Callable):
+            content = content()
+        if hasattr(content, "json"):  # useful for requests.Response
+            payload = content.json()
+        else:
+            payload = json.loads(content)
         super().__init__(payload, provider, path)
 
 
 class SourceXml(SourceDict):
-    """Read JSON formatted data from JSON object"""
+    """Read JSON formatted data from XML content"""
 
     def __init__(
-        self, content: str | SupportsRead | PathLike , provider: str = "user", path: str = None
+        self,
+        content: str | SupportsRead | PathLike,
+        provider: str = "user",
+        path: str = None,
     ):
         payload = xmltodict.parse(content)
         super().__init__(payload, provider, path)
