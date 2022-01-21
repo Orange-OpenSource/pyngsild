@@ -63,8 +63,8 @@ Not only the nature of the data differs but also :
 - the way data are accessed : read from a file, received through the network, ...
 
 **pyngsild** provides a level of abstraction to expose any datasource in a same way, whether :
-- the agent requests data from a datasource
-- the agent is triggered by the datasource : acts as a daemon listening to data sent by the datasource
+- the agent requests data from a datasource *(i.e. reads a file, requests an API)*
+- the agent is triggered by the datasource *(acts as a daemon listening to incoming data from the datasource)*
 
 The framework includes many Sources and Daemon Agents allowing to face different use cases.
 
