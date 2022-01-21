@@ -13,9 +13,37 @@
 import pkg_resources
 
 from typing import List
+from pyngsild.constants import RowFormat
 
 from pyngsild.source import Row, Source, SourceStream, SourceStdin, SourceSingle
 from pyngsild.source.moresources import SourceSample
+
+json_sample = """{"widget": {
+    "debug": "on",
+    "window": {
+        "title": "Sample Konfabulator Widget",
+        "name": "main_window",
+        "width": 500,
+        "height": 500
+    },
+    "image": { 
+        "src": "Images/Sun.png",
+        "name": "sun1",
+        "hOffset": 250,
+        "vOffset": 250,
+        "alignment": "center"
+    },
+    "text": {
+        "data": "Click Here",
+        "size": 36,
+        "style": "bold",
+        "name": "text1",
+        "hOffset": 250,
+        "vOffset": 100,
+        "alignment": "center",
+        "onMouseUp": "sun1.opacity = (sun1.opacity / 100) * 90;"
+    }
+}}"""
 
 
 def test_method_limit():
@@ -62,7 +90,7 @@ def test_source_single():
 
 
 def test_source_stdin(mocker):
-    mocker.patch('sys.stdin', {"input1", "input2"})
+    mocker.patch("sys.stdin", {"input1", "input2"})
     src = SourceStdin()
     rows: List[Row] = [x for x in src]
     assert len(rows) == 2
@@ -81,7 +109,7 @@ def test_source_sample():
 
 
 def test_source_file(mocker):
-    input_data = 'input1\ninput2\n'
+    input_data = "input1\ninput2\n"
     mock_open = mocker.mock_open(read_data=input_data)
     mocker.patch("builtins.open", mock_open)
     src = Source.from_file("test.txt")
@@ -90,7 +118,7 @@ def test_source_file(mocker):
 
 
 def test_source_file_gz(mocker):
-    input_data = 'input3\ninput4\n'
+    input_data = "input3\ninput4\n"
     mock_open = mocker.mock_open(read_data=input_data)
     mocker.patch("gzip.open", mock_open)
     src = Source.from_file("test.txt.gz")
@@ -102,5 +130,4 @@ def test_source_file_zip():
     zipname = pkg_resources.resource_filename(__name__, "data/test.txt.zip")
     src = Source.from_file(zipname)
     rows: List[Row] = [x for x in src]
-    assert rows == [Row("input5", "test.txt.zip"),
-                    Row("input6", "test.txt.zip")]
+    assert rows == [Row("input5", "test.txt.zip"), Row("input6", "test.txt.zip")]

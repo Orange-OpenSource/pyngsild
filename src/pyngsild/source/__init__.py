@@ -29,7 +29,8 @@ from pathlib import Path
 from tempfile import SpooledTemporaryFile
 from typing import Any, List, Sequence
 
-from ..utils.stream import stream_from
+from pyngsild.utils.stream import stream_from
+from pyngsild.constants import RowFormat
 
 logger = logging.getLogger(__name__)
 
@@ -92,11 +93,14 @@ class Source(Iterable):
         return Source((next(iterator) for _ in range(n)))
 
     @classmethod
-    def from_stream(
-        cls, stream: Iterable = sys.stdin, provider: str = "user", **kwargs
-    ):
+    def from_stream(cls, stream: Iterable[Any], provider: str = "user", fmt = RowFormat.TEXT, **kwargs):
         """automatically create the Source from a stream"""
-        return SourceStream(stream, **kwargs)
+        return SourceStream(stream, provider, fmt, **kwargs)
+
+    @classmethod
+    def from_stdin(cls, provider: str = "user", **kwargs):
+        """automatically create the Source from the standard input"""
+        return SourceStream(sys.stdin, provider, **kwargs)
 
     @classmethod
     def from_file(
@@ -113,7 +117,7 @@ class Source(Iterable):
         ext = None
         ext1 = None
 
-        """automatically create the Source from a filename, figuring out the extension, handles text, json and gzip compression"""
+        """automatically create the Source from a filename, figuring out the extension, handles text, json, xml and zip+gzip compression"""
 
         suffixes = [s[1:] for s in Path(filename).suffixes]  # suffixes w/o dot
         if suffixes:
@@ -185,16 +189,27 @@ class Source(Iterable):
 
 class SourceStream(Source):
     def __init__(
-        self, stream: Iterable[str], provider: str = "user", ignore_header: bool = False
+        self, stream: Iterable[Any], provider: str = "user", fmt: RowFormat = RowFormat.TEXT, ignore_header: bool = False
     ):
         if ignore_header:
             next(stream)
         self.stream = stream
         self.provider = provider
+        self.fmt = fmt
 
     def __iter__(self):
-        for line in self.stream:
-            yield Row(line.rstrip("\r\n"), self.provider)
+        match self.fmt:
+            case RowFormat.JSON:
+                from pyngsild.source.moresources import SourceJson
+                for payload in self.stream:
+                    yield from SourceJson(payload, self.provider)
+            case RowFormat.XML:
+                from pyngsild.source.moresources import SourceXml
+                for payload in self.stream:
+                    yield from SourceXml(payload, self.provider)                    
+            case _:
+                for line in self.stream:
+                    yield Row(line.rstrip("\r\n"), self.provider)
 
     def reset(self):
         pass
@@ -205,19 +220,13 @@ class SourceStdin(SourceStream):
         super().__init__(stream=sys.stdin, **kwargs)
 
 
-class SourceSingle(Source):
+class SourceSingle(SourceStream):
 
-    """
-    A SourceSingle is Source built from a Python string.
-
+    """A SourceSingle is Source built from a Python single element.
     """
 
-    def __init__(self, row: Any, provider: str = "user"):
-        self.row = row
-        self.provider = provider
-
-    def __iter__(self):
-        yield Row(self.row, self.provider)
+    def __init__(self, row: Any, provider: str = "user", fmt: RowFormat = RowFormat.TEXT, ignore_header: bool = False):
+        super().__init__([row], provider, fmt, ignore_header)
 
 
 class SourceMany(Source):

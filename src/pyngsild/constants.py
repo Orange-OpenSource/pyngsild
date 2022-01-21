@@ -16,3 +16,8 @@ class FileMode(Enum):
     BINARY = True
     TEXT = False
     
+class RowFormat(Enum):
+    TEXT = "text"
+    JSON = "json"
+    XML = "xml"
+    
