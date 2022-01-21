@@ -22,6 +22,20 @@ By providing a clean and simple structure - with components organized as a dedic
 
 ## How it works
 
+### DataSources
+
+What most differentiates an agent from another is the datasource.
+
+Not only the nature of the data differs but also :
+- the data representation : text, json, ...
+- the way data are accessed : read from a file, received through the network, ...
+
+**pyngsild** provides a level of abstraction to expose any datasource in a same way, whether :
+- the agent **requests** data from a datasource *(i.e. reads a file, requests an API)*
+- the agent **is triggered** by the datasource *(acts as a daemon listening to incoming data from the datasource)*
+
+The framework includes many Sources and Daemon Agents allowing to face different use cases.
+
 ### The pipeline
 
 A NGSI-LD Agent typically :
@@ -53,20 +67,6 @@ Eventually the Entity is send to the **Sink** which is in production mode the **
 +-----------------------------------------------------------------------------------+
                                         Agent    
 </pre>
-
-### DataSources
-
-What most differentiates an agent from another is the datasource.
-
-Not only the nature of the data differs but also :
-- the data representation : text, json, ...
-- the way data are accessed : read from a file, received through the network, ...
-
-**pyngsild** provides a level of abstraction to expose any datasource in a same way, whether :
-- the agent requests data from a datasource *(i.e. reads a file, requests an API)*
-- the agent is triggered by the datasource *(acts as a daemon listening to incoming data from the datasource)*
-
-The framework includes many Sources and Daemon Agents allowing to face different use cases.
 
 ## Where to get it
 The source code is currently hosted on GitHub at :
