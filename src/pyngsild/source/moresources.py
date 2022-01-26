@@ -18,7 +18,6 @@ import time
 import random
 import json
 import operator
-from attr import has
 import xmltodict
 import pandas as pd
 import openpyxl
@@ -32,6 +31,7 @@ if TYPE_CHECKING:
 from functools import reduce
 from pathlib import Path
 
+from pyngsild.constants import SupportsJson
 from . import Source, Row
 
 logger = logging.getLogger(__name__)
@@ -97,15 +97,29 @@ class SourceJson(SourceDict):
     """Read JSON formatted data from JSON object"""
 
     def __init__(
-        self, content: str | Callable, provider: str = "user", path: str = None
+        self, content: str | SupportsJson, provider: str = "user", path: str = None
     ):
-        if isinstance(content, Callable):
-            content = content()
         if hasattr(content, "json"):  # useful for requests.Response
             payload = content.json()
         else:
             payload = json.loads(content)
         super().__init__(payload, provider, path)
+
+
+class SourceApi(SourceJson):
+    """Read JSON data from the result of a function.
+    
+    The function result should be compatible with a requests.Response : provide a json() method
+    """
+
+    def __init__(
+        self,
+        f_call_api: Callable[..., SupportsJson],
+        provider: str = "user",
+        path: str = None,
+    ):
+        response: SupportsJson = f_call_api()
+        super().__init__(response, provider, path)
 
 
 class SourceXml(SourceDict):

@@ -54,7 +54,7 @@ class Row:
 ROW_NOT_SET = Row(None, None)
 
 
-class Source(Iterable):
+class Source(Iterable[Row]):
     """
     A Source is a pull datasource : any datasource we can iterate on.
 
@@ -70,7 +70,7 @@ class Source(Iterable):
     def __iter__(self):
         yield from self.rows
 
-    def head(self, n: int = 10) -> List[Row]:
+    def head(self, n: int = 2) -> List[Row]:
         """return a list built from the first n elements"""
         return [*islice(self, n)]
 

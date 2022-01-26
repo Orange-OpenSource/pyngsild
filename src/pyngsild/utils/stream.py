@@ -12,6 +12,7 @@
 
 import gzip
 import logging
+import urllib.request
 
 from typing import Any
 from zipfile import ZipFile
@@ -19,6 +20,8 @@ from io import StringIO, TextIOWrapper
 from pathlib import Path
 from tempfile import SpooledTemporaryFile
 
+
+from ngsildclient.utils.url import isurl
 from pyngsild.constants import FileMode
 
 logger = logging.getLogger(__name__)
@@ -32,6 +35,8 @@ def stream_from(
     # SpooledTemporaryFile used for interoperability with FastAPI
     if isinstance(fp, SpooledTemporaryFile):  # here fp is not None
         fp = fp._file
+    elif isurl(filename):
+        fp = urllib.request.urlopen(filename)
 
     logger.debug(f"{filename=} {fp=}")
     try:

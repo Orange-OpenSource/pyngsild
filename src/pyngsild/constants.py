@@ -11,13 +11,20 @@
 # SPDX-License-Identifier: Apache-2.0
 
 from enum import Enum
+from typing import Protocol
+
 
 class FileMode(Enum):
     BINARY = True
     TEXT = False
-    
+
+
 class RowFormat(Enum):
     TEXT = "text"
     JSON = "json"
     XML = "xml"
-    
+
+
+class SupportsJson(Protocol):
+    def json(self) -> dict:
+        ...

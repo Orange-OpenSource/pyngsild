@@ -1,0 +1,46 @@
+{
+    "@context": [
+        "https://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context.jsonld"
+    ],
+    "id": "urn:ngsi-ld:BitcoinCapitalization:NASDAQ:MSTR:2022-01-26T14:10:26Z",
+    "type": "BitcoinCapitalization",
+    "dateObserved": {
+        "type": "Property",
+        "value": {
+            "@type": "DateTime",
+            "@value": "2022-01-26T14:10:26Z"
+        }
+    },
+    "dataProvider": {
+        "type": "Property",
+        "value": "CoinGecko API"
+    },
+    "companyName": {
+        "type": "Property",
+        "value": "MicroStrategy Inc."
+    },
+    "stockMarket": {
+        "type": "Property",
+        "value": "NASDAQ"
+    },
+    "stockSymbol": {
+        "type": "Property",
+        "value": "MSTR"
+    },
+    "country": {
+        "type": "Property",
+        "value": "US"
+    },
+    "totalHoldings": {
+        "type": "Property",
+        "value": 121044,
+        "unitCode": "BTC",
+        "observedAt": "2022-01-26T14:10:26Z"
+    },
+    "totalValue": {
+        "type": "Property",
+        "value": 4655934201,
+        "unitCode": "USD",
+        "observedAt": "2022-01-26T14:10:26Z"
+    }
+}

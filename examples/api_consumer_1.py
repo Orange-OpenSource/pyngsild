@@ -1,24 +1,24 @@
 import requests
 from ngsildclient import Entity, iso8601, Auto
 from pyngsild.source import Row
-from pyngsild.source.moresources import SourceJson
+from pyngsild.source.moresources import SourceJson, SourceApi
 from pyngsild.sink import SinkStdout
 from pyngsild.agent import Agent
 
-COINGECKO_BASEURL = "https://api.coingecko.com/api/v3"
-COINGECKO_COMPANIES_BTC_ENDPOINT = (
-    f"{COINGECKO_BASEURL}/companies/public_treasury/bitcoin"
+COINGECKO_API = "https://api.coingecko.com/api/v3"
+COINGECKO_BTC_CAP_ENDPOINT = (
+    f"{COINGECKO_API}/companies/public_treasury/bitcoin"
 )
 
 
 class SourceCoinGecko(SourceJson):
     def __init__(self):
-        r = requests.get(COINGECKO_COMPANIES_BTC_ENDPOINT)
+        r = requests.get(COINGECKO_BTC_CAP_ENDPOINT)
         super().__init__(r, path="companies", provider="CoinGecko API")
 
 
 def build_entity(row: Row) -> Entity:
-    record = row.record
+    record: dict = row.record
     market, symbol = [x.strip() for x in record["symbol"].split(":")]
     e = Entity("BitcoinCapitalization", f"{market}:{symbol}:{iso8601.utcnow()}")
     e.obs()
@@ -35,9 +35,9 @@ def build_entity(row: Row) -> Entity:
 src = SourceCoinGecko()
 
 # As an alternative to inherit from the SourceJson class
-# One could pass a Callable to the SourceJson() constructor
+# One could use SourceApi
 # As in the line below
-# src = SourceJson(lambda: requests.get(COINGECKO_COMPANIES_BTC_ENDPOINT), path="companies", provider="CoinGecko API")
+# src = SourceApi(lambda: requests.get(COINGECKO_BTC_CAP_ENDPOINT), path="companies", provider="CoinGecko API")
 
 sink = SinkStdout()
 agent = Agent(src, sink, process=build_entity)

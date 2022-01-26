@@ -1,0 +1,250 @@
+{
+    "total_holdings": 217239.6658,
+    "total_value_usd": 8253338567.725537,
+    "market_cap_dominance": 1.15,
+    "companies": [
+        {
+            "name": "MicroStrategy Inc.",
+            "symbol": "NASDAQ:MSTR",
+            "country": "US",
+            "total_holdings": 121044,
+            "total_entry_value_usd": 3574400000,
+            "total_current_value_usd": 4598686477,
+            "percentage_of_total_supply": 0.576
+        },
+        {
+            "name": "Tesla",
+            "symbol": "NASDAQ: TSLA",
+            "country": "US",
+            "total_holdings": 48000,
+            "total_entry_value_usd": 1500000000,
+            "total_current_value_usd": 1823609191,
+            "percentage_of_total_supply": 0.229
+        },
+        {
+            "name": "Galaxy Digital Holdings",
+            "symbol": "TSE:GLXY",
+            "country": "CA",
+            "total_holdings": 16402,
+            "total_entry_value_usd": 134000000,
+            "total_current_value_usd": 623142457,
+            "percentage_of_total_supply": 0.078
+        },
+        {
+            "name": "Square Inc.",
+            "symbol": "NASDAQ:SQ",
+            "country": "US",
+            "total_holdings": 8027,
+            "total_entry_value_usd": 220000000,
+            "total_current_value_usd": 304960645,
+            "percentage_of_total_supply": 0.038
+        },
+        {
+            "name": "Marathon Patent Group",
+            "symbol": "NASDAQ:MARA",
+            "country": "US",
+            "total_holdings": 4813,
+            "total_entry_value_usd": 150000000,
+            "total_current_value_usd": 182854813,
+            "percentage_of_total_supply": 0.023
+        },
+        {
+            "name": "Hut 8 Mining Corp",
+            "symbol": "TSX:Hut-8",
+            "country": "CA",
+            "total_holdings": 4724,
+            "total_entry_value_usd": 0,
+            "total_current_value_usd": 179473537,
+            "percentage_of_total_supply": 0.022
+        },
+        {
+            "name": "Coinbase",
+            "symbol": "NASDAQ: COIN",
+            "country": "US",
+            "total_holdings": 4483,
+            "total_entry_value_usd": 130100000,
+            "total_current_value_usd": 170317500,
+            "percentage_of_total_supply": 0.021
+        },
+        {
+            "name": "NEXON Co Ltd",
+            "symbol": "TYO: 3659",
+            "country": "Japan",
+            "total_holdings": 1717,
+            "total_entry_value_usd": 100000000,
+            "total_current_value_usd": 65232020,
+            "percentage_of_total_supply": 0.008
+        },
+        {
+            "name": "Voyager Digital LTD",
+            "symbol": "CSE:VYGR",
+            "country": "CA",
+            "total_holdings": 1239,
+            "total_entry_value_usd": 7927182,
+            "total_current_value_usd": 47071912,
+            "percentage_of_total_supply": 0.006
+        },
+        {
+            "name": "Riot Blockchain, Inc.",
+            "symbol": "NASDAQ:RIOT",
+            "country": "US",
+            "total_holdings": 1175,
+            "total_entry_value_usd": 7200000,
+            "total_current_value_usd": 44640433,
+            "percentage_of_total_supply": 0.006
+        },
+        {
+            "name": "Aker ASA (Seetee AS)",
+            "symbol": "OL:AKER",
+            "country": "NO",
+            "total_holdings": 1170,
+            "total_entry_value_usd": 58599450,
+            "total_current_value_usd": 44450474,
+            "percentage_of_total_supply": 0.006
+        },
+        {
+            "name": "Meitu",
+            "symbol": "HKG:1357",
+            "country": "HK",
+            "total_holdings": 940,
+            "total_entry_value_usd": 49500000,
+            "total_current_value_usd": 35745399,
+            "percentage_of_total_supply": 0.004
+        },
+        {
+            "name": "Argo Blockchain PLC",
+            "symbol": "LON:ARB",
+            "country": "UK",
+            "total_holdings": 936,
+            "total_entry_value_usd": 37839035,
+            "total_current_value_usd": 35560379,
+            "percentage_of_total_supply": 0.004
+        },
+        {
+            "name": "Coin Citadel Inc",
+            "symbol": "OTCMKTS:CCTL",
+            "country": "US",
+            "total_holdings": 513,
+            "total_entry_value_usd": 184390,
+            "total_current_value_usd": 19489823,
+            "percentage_of_total_supply": 0.002
+        },
+        {
+            "name": "Cypherpunk Holdings Inc",
+            "symbol": "CSE: HODL",
+            "country": "Canada",
+            "total_holdings": 350,
+            "total_entry_value_usd": 5637663,
+            "total_current_value_usd": 13297150,
+            "percentage_of_total_supply": 0.002
+        },
+        {
+            "name": "Advanced Bitcoin Technologies AG",
+            "symbol": "ABT:GR",
+            "country": "DE",
+            "total_holdings": 254,
+            "total_entry_value_usd": 2117978,
+            "total_current_value_usd": 9649931,
+            "percentage_of_total_supply": 0.001
+        },
+        {
+            "name": "BIGG Digital Assets Inc.",
+            "symbol": "CNSX:BIGG",
+            "country": "CA",
+            "total_holdings": 239,
+            "total_entry_value_usd": 2690387,
+            "total_current_value_usd": 9080054,
+            "percentage_of_total_supply": 0.001
+        },
+        {
+            "name": "Cypherpunk Holdings Inc.",
+            "symbol": "CSE:HODL",
+            "country": "CA",
+            "total_holdings": 235,
+            "total_entry_value_usd": 1630000,
+            "total_current_value_usd": 8928086,
+            "percentage_of_total_supply": 0.001
+        },
+        {
+            "name": "DigitalX",
+            "symbol": "ASX:DCC",
+            "country": "AU",
+            "total_holdings": 215,
+            "total_entry_value_usd": 874835,
+            "total_current_value_usd": 8168249,
+            "percentage_of_total_supply": 0.001
+        },
+        {
+            "name": "Hive Blockchain",
+            "symbol": "CVE:HIVE",
+            "country": "CA",
+            "total_holdings": 211,
+            "total_entry_value_usd": 0,
+            "total_current_value_usd": 8016282,
+            "percentage_of_total_supply": 0.001
+        },
+        {
+            "name": "Fortress Blockchain",
+            "symbol": "TSXV:FORT",
+            "country": "CA",
+            "total_holdings": 163,
+            "total_entry_value_usd": 0,
+            "total_current_value_usd": 6200271,
+            "percentage_of_total_supply": 0.001
+        },
+        {
+            "name": "The Brooker Group",
+            "symbol": "BKK:BROOK",
+            "country": "TH",
+            "total_holdings": 122,
+            "total_entry_value_usd": 6600000,
+            "total_current_value_usd": 4647004,
+            "percentage_of_total_supply": 0.001
+        },
+        {
+            "name": "Mode Global Holdings",
+            "symbol": "LON:MODE",
+            "country": "UK",
+            "total_holdings": 85,
+            "total_entry_value_usd": 975089,
+            "total_current_value_usd": 3229307,
+            "percentage_of_total_supply": 0
+        },
+        {
+            "name": "Neptune Digital Assets Corp.",
+            "symbol": "TSXV: DASH",
+            "country": "CA",
+            "total_holdings": 75,
+            "total_entry_value_usd": 0,
+            "total_current_value_usd": 2849389,
+            "percentage_of_total_supply": 0
+        },
+        {
+            "name": "FRMO Corp.",
+            "symbol": "OTCMKTS:FRMO",
+            "country": "US",
+            "total_holdings": 63,
+            "total_entry_value_usd": 0,
+            "total_current_value_usd": 2393487,
+            "percentage_of_total_supply": 0
+        },
+        {
+            "name": "Metromile",
+            "symbol": "NASDAQ: MILE",
+            "country": "US",
+            "total_holdings": 25,
+            "total_entry_value_usd": 1000000,
+            "total_current_value_usd": 960434,
+            "percentage_of_total_supply": 0
+        },
+        {
+            "name": "Mogo Inc.",
+            "symbol": "NASDAQ:MOGO",
+            "country": "CA",
+            "total_holdings": 18,
+            "total_entry_value_usd": 595494,
+            "total_current_value_usd": 683853,
+            "percentage_of_total_supply": 0
+        }
+    ]
+}
