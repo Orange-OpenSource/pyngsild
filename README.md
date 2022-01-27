@@ -36,9 +36,9 @@ Not only the nature of the data differs but also :
 
 As datasources have very little in common, the only assumption made by the framework is : a **pyngsild** Source is iterable.
 
-*For illustrative purposes a Source item could be a line from a CSV file, an element from a JSON array, or a row from a Pandas dataframe.*
+*For illustrative purposes an element accessed from a Source could be a line from a CSV file, an item from a JSON array, or a row from a Pandas dataframe.*
 
-Many generic Sources are provided by the framework and it's easy to create a new one.
+Many generic Sources are provided by the framework and it's easy to create new ones.
 
 ### The pipeline
 
@@ -59,7 +59,7 @@ A Row is an object composed of two attributes : record and provider
 - record: Any = the raw incoming data
 - provider: str = a label indicating the data provider
 
-Eventually the Entity is send to the **Sink** which is in production mode the **Context Broker**.
+Eventually the Entity is sent to the **Sink** which is in production mode the **Context Broker**.
 
 <pre>
 +-----------------------------------------------------------------------------------+
@@ -95,7 +95,7 @@ One should use a virtual environment. For example with pyenv.
 
 ```sh
 mkdir myfiwareproject && cd myfiwareproject
-pyenv virtualenv 3.10.1 myfiwareproject
+pyenv virtualenv 3.10.2 myfiwareproject
 pyenv local
 pip install pyngsild
 ```
