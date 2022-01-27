@@ -8,7 +8,6 @@
 # see the NOTICE file for more details.
 #
 # Author: Fabien BATTELLO <fabien.battello@orange.com> et al.
-# SPDX-License-Identifier: Apache-2.0
 
 import logging
 
@@ -50,7 +49,7 @@ class Agent(BaseAgent):
         src: Source,
         sink: Sink = SinkStdout(),
         process: Callable = lambda row: row.record,
-        side_effect: Callable[[Row, Sink, Entity], int] = None
+        side_effect: Callable[[Row, Sink, Entity], int] = None,
     ):
         self.src = src
         super().__init__(sink, process, side_effect)

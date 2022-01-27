@@ -8,7 +8,6 @@
 # see the NOTICE file for more details.
 #
 # Author: Fabien BATTELLO <fabien.battello@orange.com> et al.
-# SPDX-License-Identifier: Apache-2.0
 
 import gzip
 import logging
@@ -71,5 +70,3 @@ def stream_from(
                     return TextIOWrapper(fp, encoding="utf-8"), suffixes
     except Exception as e:
         logger.error(f"Cannot open file {filename} : {e}")
-
-

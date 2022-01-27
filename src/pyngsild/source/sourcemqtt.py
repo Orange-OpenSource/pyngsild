@@ -8,7 +8,6 @@
 # see the NOTICE file for more details.
 #
 # Author: Fabien BATTELLO <fabien.battello@orange.com> et al.
-# SPDX-License-Identifier: Apache-2.0
 
 
 import time
@@ -30,17 +29,18 @@ OneOrManyStrings = Union[str, Sequence[str]]
 class SourceMqtt(Source):
     """A SourceMqtt receives data from a MQTT broker on a given topic.
 
-        Each time a message is received on the subscribed topic(s), the Source emits a Row composed of the message payload.
-        The row provider is set to the topic.    
+    Each time a message is received on the subscribed topic(s), the Source emits a Row composed of the message payload.
+    The row provider is set to the topic.
     """
 
-    def __init__(self,
-                 host: str = "localhost",
-                 port: int = MQTT_DEFAULT_PORT,
-                 credentials: Tuple[str, str] = (None, None),
-                 topic: OneOrManyStrings = "#",  # all topics
-                 qos: Literal[0, 1, 2] = 0  # no ack
-                 ):
+    def __init__(
+        self,
+        host: str = "localhost",
+        port: int = MQTT_DEFAULT_PORT,
+        credentials: Tuple[str, str] = (None, None),
+        topic: OneOrManyStrings = "#",  # all topics
+        qos: Literal[0, 1, 2] = 0,  # no ack
+    ):
         """Returns a SourceMqtt instance.
 
         Args:
@@ -54,8 +54,9 @@ class SourceMqtt(Source):
         self.topic = topic
         self._queue: "Queue[Row]" = Queue()
         user, passwd = credentials
-        self._mcsub: MqttClient = MqttClient(host, port, user, passwd,
-                                            qos, callback=self._callback)
+        self._mcsub: MqttClient = MqttClient(
+            host, port, user, passwd, qos, callback=self._callback
+        )
         # install signal hooks
         try:
             signal.signal(signal.SIGINT, self._handle_signal)
@@ -86,7 +87,6 @@ class SourceMqtt(Source):
         time.sleep(1)
 
     def close(self):
-        """Properly disconnect from MQTT broker and free resources
-        """
+        """Properly disconnect from MQTT broker and free resources"""
         self._queue.put(QUEUE_EOT)
         self._mcsub.stop()

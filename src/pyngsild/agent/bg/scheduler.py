@@ -8,7 +8,6 @@
 # see the NOTICE file for more details.
 #
 # Author: Fabien BATTELLO <fabien.battello@orange.com> et al.
-# SPDX-License-Identifier: Apache-2.0
 
 import anyio
 import time
@@ -44,7 +43,7 @@ class Scheduler(ManagedDaemon):
         agent: Agent,
         interval: int = 1,
         unit: UNIT = UNIT.minutes,
-        func: Callable = None
+        func: Callable = None,
     ):
         # take an already created agent and reschedule it
         # 1 - a func may be provided to create a new Source

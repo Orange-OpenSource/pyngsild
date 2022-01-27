@@ -8,7 +8,6 @@
 # see the NOTICE file for more details.
 #
 # Author: Fabien BATTELLO <fabien.battello@orange.com> et al.
-# SPDX-License-Identifier: Apache-2.0
 
 import asyncio
 import threading
@@ -26,6 +25,7 @@ from pyngsild.sink import Sink, SinkStdout
 from pyngsild.source import Source, Row
 
 logger = logging.getLogger(__name__)
+
 
 class WatchDog(ManagedDaemon):
     """Watchdog looks a directory for new files."""

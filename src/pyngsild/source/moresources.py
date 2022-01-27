@@ -8,7 +8,6 @@
 # see the NOTICE file for more details.
 #
 # Author: Fabien BATTELLO <fabien.battello@orange.com> et al.
-# SPDX-License-Identifier: Apache-2.0
 
 from __future__ import annotations
 from os import PathLike
@@ -108,7 +107,7 @@ class SourceJson(SourceDict):
 
 class SourceApi(SourceJson):
     """Read JSON data from the result of a function.
-    
+
     The function result should be compatible with a requests.Response : provide a json() method
     """
 

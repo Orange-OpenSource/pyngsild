@@ -1,3 +1,14 @@
+#!/usr/bin/env python3
+
+# Software Name: pyngsild
+# SPDX-FileCopyrightText: Copyright (c) 2021 Orange
+# SPDX-License-Identifier: Apache 2.0
+#
+# This software is distributed under the Apache 2.0;
+# see the NOTICE file for more details.
+#
+# Author: Fabien BATTELLO <fabien.battello@orange.com> et al.
+
 import requests
 from ngsildclient import Entity, iso8601, Auto
 from pyngsild.source import Row
@@ -6,9 +17,7 @@ from pyngsild.sink import SinkStdout
 from pyngsild.agent import Agent
 
 COINGECKO_API = "https://api.coingecko.com/api/v3"
-COINGECKO_BTC_CAP_ENDPOINT = (
-    f"{COINGECKO_API}/companies/public_treasury/bitcoin"
-)
+COINGECKO_BTC_CAP_ENDPOINT = f"{COINGECKO_API}/companies/public_treasury/bitcoin"
 
 
 class SourceCoinGecko(SourceJson):
@@ -28,7 +37,9 @@ def build_entity(row: Row) -> Entity:
     e.prop("stockSymbol", symbol)
     e.prop("country", record["country"])
     e.prop("totalHoldings", record["total_holdings"], unitcode="BTC", observedat=Auto)
-    e.prop("totalValue", record["total_current_value_usd"], unitcode="USD", observedat=Auto)
+    e.prop(
+        "totalValue", record["total_current_value_usd"], unitcode="USD", observedat=Auto
+    )
     return e
 
 
