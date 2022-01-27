@@ -31,7 +31,7 @@ Not only the nature of the data differs but also :
 - the way data are accessed : read from a file, received through the network, ...
 
 **pyngsild** provides a level of abstraction in order to expose any datasource in a same way, whether :
-- the agent **consumes** a datasource *(i.e. reads a file, requests an API)*s
+- the agent **consumes** a datasource *(i.e. reads a file, requests an API)*
 - the agent **is triggered** by the datasource *(acts as a daemon listening to incoming data pushed by the datasource)*
 
 As datasources have very little in common, the only assumption made by the framework is : a **pyngsild** Source is iterable.
