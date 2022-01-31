@@ -58,7 +58,7 @@ jobs:
       #    add matrix specifics and run test suite
       #----------------------------------------------
       - name: Run tests
-        run: poetry run pytest --cov=ngsildclient --cov-report=xml
+        run: poetry run pytest --cov=pyngsild --cov-report=xml
       #----------------------------------------------
       #    upload coverage stats
       #----------------------------------------------
