@@ -24,7 +24,7 @@ client = TestClient(agent.app)
 def test_version():
     response = client.get("/version")
     assert response.status_code == 200
-    assert response.json() == {"version": "pyngsild-0.1.0"}
+    assert response.json() == {"version": "pyngsild-0.1.1"}
 
 
 def test_upload_multipart():

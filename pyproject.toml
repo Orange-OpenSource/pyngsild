@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pyngsild"
-version = "0.1.0"
+version = "0.1.1"
 description = "A Python data-centric framework whose goal is to ease and speed up the development of NGSI-LD agents"
 authors = ["fbattello <fabien.battello@orange.com>"]
 license = "Apache 2.0"
@@ -24,7 +24,7 @@ paho-mqtt = "^1.6.1"
 shortuuid = "^1.0.8"
 schedule = "^1.1.0"
 watchgod = "^0.7"
-ngsildclient = "^0.1.1"
+ngsildclient = "^0.1.3"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.5"
