@@ -1,0 +1,28 @@
+{
+    "@context": [
+        "https://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context.jsonld"
+    ],
+    "id": "urn:ngsi-ld:TideGaugeObserved:tideGaugeSensor:SHOM:6119:2022-02-03T10:50:00Z",
+    "type": "TideGaugeObserved",
+    "dateObserved": {
+        "type": "Property",
+        "value": {
+            "@type": "DateTime",
+            "@value": "2022-02-03T10:50:00Z"
+        }
+    },
+    "waterLevel": {
+        "type": "Property",
+        "value": 2.8,
+        "unitCode": "MTR",
+        "observedAt": "2022-02-03T10:50:00Z"
+    },
+    "refDevice": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:Device:tideGaugeSensor:SHOM:6119"
+    },
+    "dataProvider": {
+        "type": "Property",
+        "value": "SHOM REFMAR API"
+    }
+}

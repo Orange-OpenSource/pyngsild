@@ -1,0 +1,29 @@
+{
+    "@context": "https://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context.jsonld",
+    "id": "urn:ngsi-ld:DeviceModel:liquidLevelSensor:Vega:Vegapuls61",
+    "type": "DeviceModel",
+    "brandName": {
+        "type": "Property",
+        "value": "VEGA"
+    },
+    "category": {
+        "type": "Property",
+        "value": "sensor"
+    },
+    "controlledProperty": {
+        "type": "Property",
+        "value": "liquidLevel"
+    },
+    "modelName": {
+        "type": "Property",
+        "value": "VEGAPULS 61"
+    },
+    "seeAlso": {
+        "type": "Property",
+        "value": "https://www.vega.com/en/products/product-catalog/level/radar/vegapuls-61"
+    },
+    "supportedUnits": {
+        "type": "Property",
+        "value": "MTR"
+    }
+}

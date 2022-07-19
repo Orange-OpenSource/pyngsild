@@ -1,0 +1,43 @@
+{
+    "@context": "https://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context.jsonld",
+    "id": "urn:ngsi-ld:Device:tideGaugeSensor:SHOM:6119",
+    "type": "Device",
+    "address": {
+        "type": "Property",
+        "value": "refmar@shom.fr"
+    },
+    "controlledProperty": {
+        "type": "Property",
+        "value": "waterLevel"
+    },
+    "provider": {
+        "type": "Property",
+        "value": "SHOM / GPM Bordeaux"
+    },
+    "refDeviceModel": {
+        "type": "Relationship",
+        "object": "urn:ngsi-ld:DeviceModel:liquidLevelSensor:Vega:Vegapuls61"
+    },
+    "shomId": {
+        "type": "Property",
+        "value": 6119
+    },
+    "description": {
+        "type": "Property",
+        "value": "The Bassens tide gauge station is part of the french tide gauge observation reference network (REFMAR)"
+    },
+    "name": {
+        "type": "Property",
+        "value": "Bassens"
+    },
+    "location": {
+        "type": "GeoProperty",
+        "value": {
+            "type": "Point",
+            "coordinates": [
+                -0.537278,
+                44.904193
+            ]
+        }
+    }
+}

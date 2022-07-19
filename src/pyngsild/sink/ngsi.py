@@ -25,7 +25,7 @@ class SinkNgsi(Sink):
 
     def write(self, entity: Entity):
         try:
-            self.client.upsert(entity)
+            self.client.create(entity, skip=True, overwrite=True)
         except Exception as e:
             raise SinkException(e)
 
