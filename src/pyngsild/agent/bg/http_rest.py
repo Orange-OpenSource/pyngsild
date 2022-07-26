@@ -15,6 +15,7 @@ from datetime import datetime
 from pydantic import BaseModel
 from typing import Callable, Any
 from anyio import Lock
+from pyngsild.constants import RowFormat
 from pyngsild.source import SourceSingle, Row
 from ngsildclient.model.entity import Entity
 from pyngsild.sink import Sink, SinkStdout
@@ -31,9 +32,9 @@ class RoomObserved(BaseModel):
 
 def process(row: Row) -> Entity:
     room: RoomObserved = row.record
-    e = Entity("RoomTemperatureObserved", room["room"])
-    e.prop("temperature", room["temperature"])
-    e.prop("pressure", room["pressure"])
+    e = Entity("RoomTemperatureObserved", room.room)
+    e.prop("temperature", room.temperature)
+    e.prop("pressure", room.pressure)
     return e
 
 
@@ -47,12 +48,12 @@ class HttpRestAgent(ManagedDaemon):
         super().__init__(sink, process)
         self.endpoint = endpoint
 
-        @self.app.post(self.endpoint)
+        @self.app.post(self.endpoint, status_code=201)
         async def process(room: RoomObserved):
             lock = Lock()
             async with lock:
                 self.status.lastcalltime = datetime.now()
                 self.status.calls += 1
-            src = SourceSingle(Row(room))
+            src = SourceSingle(room, fmt=RoomObserved)
             await self.trigger(src)
             return room

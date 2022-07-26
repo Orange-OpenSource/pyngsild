@@ -188,7 +188,7 @@ class Source(Iterable[Row]):
 
 class SourceStream(Source):
     def __init__(
-        self, stream: Iterable[Any], provider: str = "user", fmt: RowFormat = RowFormat.TEXT, ignore_header: bool = False
+        self, stream: Iterable[Any], provider: str = "user", fmt: RowFormat | str = RowFormat.TEXT, ignore_header: bool = False
     ):
         if ignore_header:
             next(stream)
@@ -206,9 +206,13 @@ class SourceStream(Source):
                 from pyngsild.source.moresources import SourceXml
                 for payload in self.stream:
                     yield from SourceXml(payload, self.provider)                    
-            case _:
+            case RowFormat.TEXT | str():
                 for line in self.stream:
-                    yield Row(line.rstrip("\r\n"), self.provider)
+                    yield Row(line.rstrip("\r\n"), self.provider)                   
+            case _:
+                for x in self.stream:
+                    yield Row(x, self.provider)
+
 
     def reset(self):
         pass
