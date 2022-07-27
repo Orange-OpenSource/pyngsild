@@ -9,7 +9,7 @@
 #
 # Author: Fabien BATTELLO <fabien.battello@orange.com> et al.
 
-__version__ = "0.1.1"
+__version__ = "0.1.2"
 
 from .source import Row, Source, SourceStream, SourceStdin, SourceSingle, SourceMany
 from .source.moresources import (

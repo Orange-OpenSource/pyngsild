@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pyngsild"
-version = "0.1.1"
+version = "0.1.2"
 description = "A Python data-centric framework whose goal is to ease and speed up the development of NGSI-LD agents"
 authors = ["fbattello <fabien.battello@orange.com>"]
 license = "Apache 2.0"
