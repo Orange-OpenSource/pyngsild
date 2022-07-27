@@ -208,8 +208,8 @@ class SourceStream(Source):
                     yield from SourceXml(payload, self.provider)                    
             case RowFormat.TEXT | str():
                 for line in self.stream:
-                    yield Row(line.rstrip("\r\n"), self.provider)                   
-            case _:
+                    yield Row(line.rstrip("\r\n"), self.provider)        
+            case _:           
                 for x in self.stream:
                     yield Row(x, self.provider)
 

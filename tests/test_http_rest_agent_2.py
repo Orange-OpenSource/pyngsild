@@ -15,24 +15,23 @@ from pydantic import BaseModel
 from pyngsild.agent.bg.http_rest import HttpRestAgent
 from pyngsild.agent.stats import Stats
 from pyngsild import Row
-from ngsildclient import Entity
+from ngsildclient import *
 
 
-class RoomObserved(BaseModel):
-    room: int
-    temperature: int
-    pressure: float
+class AgriParcel(BaseModel):
+    id: str
+    date: str
+    moisture: int
 
 
-def process(row: Row) -> Entity:
-    room: RoomObserved = row.record
-    e = Entity("RoomTemperatureObserved", f"Room{room.room}")
-    e.prop("temperature", room.temperature)
-    e.prop("pressure", room.pressure)
+def build_entity_json(row: Row) -> Entity:
+    parcel: AgriParcel = row.record
+    e = Entity("AgriParcelRecord", parcel.id)
+    e.obs(parcel.date)
+    e.prop("soilMoistureVwc", parcel.moisture, observedat=Auto, unitcode="C62")
     return e
 
-
-agent = HttpRestAgent(process=process)
+agent = HttpRestAgent(process=build_entity_json, endpoint="/moisture/", mtype=AgriParcel)
 client = TestClient(agent.app)
 
 
@@ -44,7 +43,7 @@ def test_version():
 
 def test_endpoint():
     response = client.post(
-        "/rooms/", json={"room": 1, "temperature": 23, "pressure": 710.0}
+        "/moisture/", json={"id": "parcel:001", "date": "2022-07-25T09:00:12Z", "moisture": 75}
     )
     assert response.status_code == 201
     assert agent.stats == Stats(1, 1, 1, 0, 0)

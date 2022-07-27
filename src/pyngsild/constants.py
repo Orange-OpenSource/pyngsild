@@ -22,6 +22,7 @@ class RowFormat(Enum):
     TEXT = "text"
     JSON = "json"
     XML = "xml"
+    UNDEFINED = "undefined"
 
 
 class SupportsJson(Protocol):

@@ -44,16 +44,18 @@ class HttpRestAgent(ManagedDaemon):
         sink: Sink = SinkStdout(),
         process: Callable[[Row], None] = lambda row: row.record,
         endpoint: str = "/rooms/",
+        mtype: type = RoomObserved
     ):
         super().__init__(sink, process)
         self.endpoint = endpoint
+        self.mtype = mtype
 
         @self.app.post(self.endpoint, status_code=201)
-        async def process(room: RoomObserved):
+        async def process(resource: self.mtype):
             lock = Lock()
             async with lock:
                 self.status.lastcalltime = datetime.now()
                 self.status.calls += 1
-            src = SourceSingle(room, fmt=RoomObserved)
+            src = SourceSingle(resource, fmt=RowFormat.UNDEFINED)
             await self.trigger(src)
-            return room
+            return resource
