@@ -24,7 +24,7 @@ paho-mqtt = "^1.6.1"
 shortuuid = "^1.0.8"
 schedule = "^1.1.0"
 watchgod = "^0.7"
-ngsildclient = "^0.1.3"
+ngsildclient = "^0.2.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.5"
